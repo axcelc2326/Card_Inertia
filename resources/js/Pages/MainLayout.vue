@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 
 const isOpen = ref(false);
+const page = usePage();
 </script>
 
 <template>
@@ -22,19 +23,59 @@ const isOpen = ref(false);
             </button>
 
             <div class="hidden md:flex md:flex-row md:uppercase md:gap-6">
-                <Link href="/home" class="text-white transition duration-300 hover:text-gray-300 hover:underline">Home</Link>
-                <Link href="/about" class="text-white transition duration-300 hover:text-gray-300 hover:underline">About</Link>
-                <Link href="/products" class="text-white transition duration-300 hover:text-gray-300 hover:underline">Products</Link>
-                <Link href="/categories" class="text-white transition duration-300 hover:text-gray-300 hover:underline">Categories</Link>
+                <Link
+                    href="/home"
+                    class="transition duration-300 hover:text-gray-300 hover:underline"
+                    :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/home'), 'text-white': !page.url.startsWith('/home') }">
+                    Home
+                </Link>
+                <Link
+                    href="/about"
+                    class="transition duration-300 hover:text-gray-300 hover:underline"
+                    :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/about'), 'text-white': !page.url.startsWith('/about') }">
+                    About
+                </Link>
+                <Link
+                    href="/products"
+                    class="transition duration-300 hover:text-gray-300 hover:underline"
+                    :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/products'), 'text-white': !page.url.startsWith('/products') }">
+                    Products
+                </Link>
+                <Link
+                    href="/categories"
+                    class="transition duration-300 hover:text-gray-300 hover:underline"
+                    :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/categories'), 'text-white': !page.url.startsWith('/categories') }">
+                    Categories
+                </Link>
             </div>
         </div>
 
         <!-- Mobile Menu -->
         <div v-if="isOpen" class="md:hidden flex flex-col items-center space-y-4 mt-4 bg-gray-900 p-4 rounded-lg shadow-md">
-            <Link href="/home" class="text-white text-lg transition duration-300 hover:text-gray-300 hover:underline">Home</Link>
-            <Link href="/about" class="text-white text-lg transition duration-300 hover:text-gray-300 hover:underline">About</Link>
-            <Link href="/products" class="text-white text-lg transition duration-300 hover:text-gray-300 hover:underline">Products</Link>
-            <Link href="/categories" class="text-white text-lg transition duration-300 hover:text-gray-300 hover:underline">Categories</Link>
+            <Link
+                href="/home"
+                class="text-lg transition duration-300 hover:text-gray-300 hover:underline"
+                :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/home') }">
+                Home
+            </Link>
+            <Link
+                href="/about"
+                class="text-lg transition duration-300 hover:text-gray-300 hover:underline"
+                :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/about') }">
+                About
+            </Link>
+            <Link
+                href="/products"
+                class="text-lg transition duration-300 hover:text-gray-300 hover:underline"
+                :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/products') }">
+                Products
+            </Link>
+            <Link
+                href="/categories"
+                class="text-lg transition duration-300 hover:text-gray-300 hover:underline"
+                :class="{ 'text-red-500 font-bold underline': page.url.startsWith('/categories') }">
+                Categories
+            </Link>
         </div>
     </nav>
     <slot/>
