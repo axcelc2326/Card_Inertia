@@ -11,7 +11,7 @@ const isOpen = ref(false);
             <Link href="/">
                 <div class="text-white text-2xl font-bold tracking-wide hover:text-gray-300 transition duration-300">
                     <h1>
-                        Sy<span class="text-red-500">[n]</span>ex
+                        Sy<span class="text-red-600">[n]</span>ex
                     </h1>
                 </div>
             </Link>
